@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project creates a simple Rest API to manage data for movies and its ratings (by comment).
 
-Things you may want to cover:
+## Docker
 
-* Ruby version
+```
+$ docker build . -t movies
 
-* System dependencies
+$ docker run -p 3000:3000 -d movies:latest
+```
 
-* Configuration
+## Without docker
 
-* Database creation
+```
+$ bundle install --path vendor/bundle
 
-* Database initialization
+$ rails db:migrate
 
-* How to run the test suite
+$ rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
