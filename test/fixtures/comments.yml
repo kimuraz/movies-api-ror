@@ -2,14 +2,8 @@
 
 one:
   comment: MyText
-  user: 
-  movie: 
-  rate: 1.5
-  date: 2019-04-15 21:30:00
+  rate: 1
 
 two:
   comment: MyText
-  user: 
-  movie: 
-  rate: 1.5
-  date: 2019-04-15 21:30:00
+  rate: 1
