@@ -7,3 +7,5 @@ COPY . .
 RUN bundle install --path vendor/bundle
 
 VOLUME ./db:/opt/movies/db/
+
+CMD ['rails', 's']
