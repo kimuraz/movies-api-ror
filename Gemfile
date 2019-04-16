@@ -52,3 +52,4 @@ gem 'simple_command'
 
 # CORS
 gem 'rack-cors'
+

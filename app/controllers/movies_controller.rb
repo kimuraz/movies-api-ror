@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/comments
   def show_comments
+    @comments = Comment.where("movie_id = #{params[:movie_id]}")
     render json: @comments
   end
 
@@ -47,10 +48,6 @@ class MoviesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
-    end
-
-    def set_comments
-	    @comments = Comment.where("movie_id = #{params[:id]}")
     end
 
     # Only allow a trusted parameter "white list" through.
