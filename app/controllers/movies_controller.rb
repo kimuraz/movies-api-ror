@@ -22,6 +22,7 @@ class MoviesController < ApplicationController
   # POST /movies
   def create
     @movie = Movie.new(movie_params)
+    @movie.user_id = current_user.id
 
     if @movie.save
       render json: @movie, status: :created, location: @movie
