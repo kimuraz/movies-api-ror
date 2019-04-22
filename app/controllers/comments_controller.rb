@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
 
     if @comment.save
       render json: @comment, status: :created, location: @comment
@@ -26,10 +27,14 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
-    if @comment.update(comment_params)
-      render json: @comment
+    if @comment.user_id != current_user.id
+      render json: {err: "You're not the owner of this comment" }, status: :unauthorized
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      if @comment.update(comment_params)
+        render json: @comment
+      else
+        render json: @comment.errors, status: :unprocessable_entity
+      end
     end
   end
 
@@ -46,6 +51,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.fetch(:comment, {})
+      params.permit(:comment, :movie_id)
     end
 end
