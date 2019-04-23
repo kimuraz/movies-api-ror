@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/comments
   def show_comments
-    @comments = Comment.where("movie_id = #{params[:movie_id]}")
+    @comments = Comment.where("movie_id = #{params[:movie_id]}").left_outer_joins(:user).select('comments.*, users.name as author')
     render json: @comments
   end
 
